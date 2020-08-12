@@ -1,0 +1,32 @@
+version: '3.7'
+
+services:
+
+  gitlab-runner:
+    image: gitlab/gitlab-runner:alpine-v13.1.0
+    container_name: gitlab-runner
+    hostname: gitlab-runner
+    networks:
+      - default
+      - proxy
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - gitlab-runner-config:/etc/gitlab-runner
+      - ./config.toml:/etc/gitlab-runner/config.toml
+    labels:
+      - "traefik.enable=false"
+    restart: unless-stopped
+    extra_hosts:
+      - "gitlab.z5.devl:172.25.0.2"
+      - "docker.z5.devl:172.25.0.2"
+    # A tester (et à variabiliser)
+    #external_links:
+    #  - "traefik:gitlab.z5.devl"
+    #  - "traefik:docker.z5.devl"
+
+volumes:
+  gitlab-runner-config:
+
+networks:
+  proxy:
+    external: true
