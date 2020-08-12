@@ -16,13 +16,9 @@ services:
     labels:
       - "traefik.enable=false"
     restart: unless-stopped
-    extra_hosts:
-      - "gitlab.z5.devl:172.25.0.2"
-      - "docker.z5.devl:172.25.0.2"
-    # A tester (et à variabiliser)
-    #external_links:
-    #  - "traefik:gitlab.z5.devl"
-    #  - "traefik:docker.z5.devl"
+    external_links:
+      - "traefik:${SERVER_HOSTNAME}"
+      - "traefik:${REGISTRY_HOSTNAME}"
 
 volumes:
   gitlab-runner-config:

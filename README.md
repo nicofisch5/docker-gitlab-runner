@@ -22,6 +22,14 @@ with bash scripts and no Windows support is planned yet (never ?).
 
 This project is working with Traefik.
 
+### Env variables
+
+In order to copy the default environment variables and set your local configuration, copy the .env.example file
+
+```bash
+cp .env.example .env
+```
+
 ## Installation
 
 ### Gitlab runner

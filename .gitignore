@@ -4,3 +4,6 @@
 
 # runner config
 config.toml
+
+# Env file
+.env
