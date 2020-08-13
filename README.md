@@ -26,10 +26,11 @@ This project is working with Traefik.
 
 ### Env variables
 
-In order to copy the default environment variables and set your local configuration, copy the .env.example file
+In order to copy the default environment variables and set your local configuration, copy the .env.example file and create a congig file
 
 ```bash
 cp .env.example .env
+touch config.toml
 ```
 
 Once done, you can edit all the environment variables in the newly generated .env.
@@ -71,7 +72,7 @@ docker-compose exec gitlab-runner gitlab-runner register \
     --tag-list docker \
     --executor docker \
     --docker-volumes '/var/run/docker.sock:/var/run/docker.sock' \
-    --docker-image ubuntu:18.04 \
+    --docker-image ubuntu:18.04
 ```
 
 To get `gitlab-token` just go to gitlab admin interface (https://git.example.devl/admin/runners).
